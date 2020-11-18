@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.162317, 0.597656, 0.137741, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color( 0.0705882, 0.364706, 0.0352941, 1 )
+shadow_size = 3
+shadow_offset = Vector2( 1, 2 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.14902, 0.670588, 0.117647, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color( 0.0313726, 0.219608, 0.0196078, 1 )
+shadow_size = 3
+shadow_offset = Vector2( 1, 2 )
+
+[node name="Button" type="Button"]
+margin_left = 1.92015
+margin_top = 0.746887
+margin_right = 75.9202
+margin_bottom = 37.7469
+custom_styles/hover = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
