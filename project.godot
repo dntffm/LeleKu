@@ -20,6 +20,10 @@ run/main_scene="res://create_profile.tscn"
 boot_splash/image="res://assets/awal.png"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://global/global.gd"
+
 [display]
 
 window/size/width=720

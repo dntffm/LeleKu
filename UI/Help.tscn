@@ -1,15 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/isi nama.png" type="Texture" id=1]
 [ext_resource path="res://font/AmazingKids.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/ButtonPauseMenuRed.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Help.gd" type="Script" id=4]
+[ext_resource path="res://font/SUPER BOOM.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/shop.png" type="Texture" id=6]
+[ext_resource path="res://assets/pan.png" type="Texture" id=7]
+[ext_resource path="res://assets/food.png" type="Texture" id=8]
+[ext_resource path="res://assets/coin.png" type="Texture" id=9]
+[ext_resource path="res://assets/suplement.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 53
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 23
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 2 )
 
 [node name="Control" type="Control"]
@@ -31,16 +41,96 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="TextureRect"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -109.0
-margin_top = -405.0
-margin_right = 109.0
-margin_bottom = -351.0
+margin_left = -175.5
+margin_top = 80.0
+margin_right = 175.5
+margin_bottom = 134.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Help Menu"
+text = "Help Menu (Icon)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coin" type="Sprite" parent="TextureRect"]
+position = Vector2( 176.789, 274.446 )
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="TextureRect/coin"]
+margin_left = 131.18
+margin_top = -10.0907
+margin_right = 675.18
+margin_bottom = 6.90927
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Icon Uang = Menandakan uang yang dimiliki pemain (Dalam Rupiah)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shop" type="Sprite" parent="TextureRect"]
+position = Vector2( 168.572, 532.693 )
+scale = Vector2( 0.7937, 0.7937 )
+texture = ExtResource( 6 )
+
+[node name="Label3" type="Label" parent="TextureRect/shop"]
+margin_left = 172.37
+margin_top = -195.389
+margin_right = 716.37
+margin_bottom = -178.389
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Icon clean = Digunakan untuk pembersihan kolam"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pan" type="Sprite" parent="TextureRect"]
+position = Vector2( 183.102, 400.26 )
+texture = ExtResource( 7 )
+
+[node name="Label2" type="Label" parent="TextureRect/pan"]
+margin_left = 121.797
+margin_top = 98.3156
+margin_right = 665.797
+margin_bottom = 115.316
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Icon Shop = Berisi tentang item-item yang dijual di dalam game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="suplement" type="Sprite" parent="TextureRect"]
+position = Vector2( 169.148, 658.575 )
+scale = Vector2( 0.815168, 0.815168 )
+texture = ExtResource( 10 )
+
+[node name="Label3" type="Label" parent="TextureRect/suplement"]
+margin_left = 161.9
+margin_top = -43.4371
+margin_right = 705.9
+margin_bottom = -26.4371
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Icon Vitamin = Berisi tentang vitamin-vitamin yang dimiliki"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food" type="Sprite" parent="TextureRect"]
+position = Vector2( 177.729, 805.207 )
+texture = ExtResource( 8 )
+
+[node name="Label4" type="Label" parent="TextureRect/food"]
+margin_left = 118.355
+margin_top = -33.3696
+margin_right = 662.355
+margin_bottom = -16.3696
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Icon Food = Berisi pakan yang dimiliki"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -50,6 +140,6 @@ margin_left = 34.1346
 margin_top = 33.3984
 margin_right = 108.135
 margin_bottom = 70.3984
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "To Menu"
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

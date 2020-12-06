@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/Move Pool.png" type="Texture" id=1]
 [ext_resource path="res://assets/pembesaran.png" type="Texture" id=2]
@@ -19,7 +19,6 @@
 [ext_resource path="res://font/AmazingKids.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://assets/icons8_toggle_on_127px.png" type="Texture" id=19]
 [ext_resource path="res://assets/shop-3.png" type="Texture" id=23]
-[ext_resource path="res://assets/shop-4.png" type="Texture" id=24]
 [ext_resource path="res://assets/shop-1.png" type="Texture" id=25]
 [ext_resource path="res://assets/25%.png" type="Texture" id=26]
 [ext_resource path="res://assets/shop-2.png" type="Texture" id=27]
@@ -215,7 +214,6 @@ rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 9 )
 
 [node name="ModalDialog" parent="." instance=ExtResource( 17 )]
-visible = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -352,19 +350,6 @@ custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Vit"
 
-[node name="LabelShop4" type="Label" parent="ModalShop"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 0.158752
-margin_top = 23.3511
-margin_right = 40.1588
-margin_bottom = 40.3511
-custom_fonts/font = SubResource( 10 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Seeds'"
-
 [node name="LabelShop5" type="Label" parent="ModalShop"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -390,6 +375,9 @@ margin_bottom = 39.7211
 custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Food"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CloseShop" parent="ModalShop" instance=ExtResource( 16 )]
 anchor_left = 0.5
@@ -423,18 +411,6 @@ margin_bottom = 342.857
 rect_scale = Vector2( 0.5, 0.5 )
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 23 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Seeds" type="TextureButton" parent="ModalShop"]
-margin_left = 355.128
-margin_top = 219.256
-margin_right = 449.128
-margin_bottom = 315.256
-rect_scale = Vector2( 0.5, 0.5 )
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -568,6 +544,7 @@ visible = false
 position = Vector2( 429.633, 428.373 )
 z_index = 5
 [connection signal="pressed" from="PauseBtn" to="." method="_on_PauseBtn_pressed"]
+[connection signal="pressed" from="MovePool" to="." method="_on_MovePool_pressed"]
 [connection signal="pressed" from="Food" to="." method="_on_Food_pressed"]
 [connection signal="pressed" from="Shop" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Vitamin" to="." method="_on_Vitamin_pressed"]

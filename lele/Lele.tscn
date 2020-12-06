@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://assets/New folder/lele2-min.png" type="Texture" id=2]
@@ -17,21 +17,93 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8.79874, 19.1954 )
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.345098, 0.654902, 0.196078, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 19.3259, 12.0312 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 1.5708
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 animation = "swim"
-frame = 6
+frame = 3
 playing = true
 centered = false
 
+[node name="Indicator" type="Panel" parent="AnimatedSprite"]
+margin_left = 10.5
+margin_top = 14.75
+margin_right = 19.5
+margin_bottom = 56.75
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FeedIndicator" type="Panel" parent="AnimatedSprite"]
+anchor_top = -0.0350771
+anchor_bottom = -0.0350771
+margin_left = -48.5125
+margin_top = -68.9427
+margin_right = -7.51251
+margin_bottom = 4.05732
+rect_pivot_offset = Vector2( 68.0479, 36.5 )
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="AnimatedSprite/FeedIndicator"]
+margin_left = 43.884
+margin_top = 53.5787
+margin_right = 61.884
+margin_bottom = 71.5787
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="AnimatedSprite/FeedIndicator/Panel"]
+margin_left = 24.1639
+margin_top = 13.1499
+margin_right = 36.1639
+margin_bottom = 25.1499
+custom_styles/panel = SubResource( 5 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 20.6741, 21.0312 )
-shape = SubResource( 2 )
+position = Vector2( -20.8259, 21.0312 )
+shape = SubResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 73.9989, 18.4997 )

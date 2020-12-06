@@ -1,6 +1,6 @@
 extends Control
 
-
+var leleNode = preload("res://lele/Lele.tscn")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -8,7 +8,16 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var fishes = Global.data["pembesaran"]["ikanbesar"] + Global.data["pembesaran"]["ikankecil"]
+	print(fishes)
+	for x in range(fishes):
+		var parent = get_node("Pool")
+		var lele = leleNode.instance()
+		lele.position = Vector2(195+randi()%200+5,310+randi()%200+5)
+		lele.z_index = 0	
+		lele.scale.x = 2.0
+		lele.scale.y = 2.0
+		parent.add_child(lele)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,3 +63,7 @@ func _on_Yes_pressed():
 
 func _on_No_pressed():
 	get_node("ModalDialog").hide()
+
+
+func _on_MovePool_pressed():
+	get_tree().change_scene("res://UI/Pendederan.tscn")
