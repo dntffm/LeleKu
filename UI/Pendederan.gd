@@ -13,20 +13,18 @@ var path = "res://storage/storage.json"
 
 
 func _ready():
-	print(Global.data)
 	$Money/MoneyBadge/MoneyLabel.text = str(Global.data.money)
 	$Pool/TextureRect/CountLabel.text = str(0) + " / 20"
+	$Food/FoodBadge/FoodCount.text = str(0)
+	$Vitamin/VitBadge/VitBadgeLabel.text = str(0)
 	PauseButton = get_node("PauseBtn")
 	get_node("Area2D").hide()
 	
 	#ClosePauseDialog = get_node("Pause/ColorRect/Panel/CloseDialogButton")
 
 func _process(delta):
-	$Food/FoodBadge/FoodBadgeLabel.text = str(foodCount)
-	$Vitamin/VitBadge/VitBadgeLabel.text = str(vitCount)
 	if(foodButton):
 		$Area2D.position = get_viewport().get_mouse_position()
-		print($Area2D.get_colliding_bodies())
 	
 
 func _on_PauseBtn_pressed():
@@ -70,24 +68,31 @@ func _on_CloseShop_pressed():
 
 func _on_Seeds_pressed():
 	var paretnt = get_node("Grass")
-	var lele = leleNode.instance()
-	lele.position = Vector2(195+randi()%200+5,310+randi()%200+5)
-	lele.z_index = 0	
-	lele.scale.x = 2.0
-	lele.scale.y = 2.0
-	paretnt.add_child(lele)
-	
-	var file = File.new()
-	
-	var data = Global.data
-	data["pendederan"]["ikankecil"] += 1
-	if file.open("res://storage/storage.json",File.WRITE) != 0:
-		print("error opening file")
-		return
-	file.store_line(to_json(data))
-	file.close()	
-	
-	$Pool/TextureRect/CountLabel.text = str(Global.data["pendederan"]["ikankecil"] + Global.data["pendederan"]["ikanbesar"]) + " / 20"
+	if paretnt.get_child_count() == 20:
+		print("cant")
+	else:
+		var lele = leleNode.instance()
+		var currMoney = Global.data.money - 300
+		$Money/MoneyBadge/MoneyLabel.text = str(currMoney)
+		lele.position = Vector2(195+randi()%200+5,310+randi()%200+5)
+		lele.z_index = 0	
+		lele.scale.x = 2.0
+		lele.scale.y = 2.0
+		paretnt.add_child(lele)
+		
+		
+		var file = File.new()
+		
+		var data = Global.data
+		data["money"] = currMoney
+		data["pendederan"]["ikankecil"] += 1
+		if file.open("res://storage/storage.json",File.WRITE) != 0:
+			print("error opening file")
+			return
+		file.store_line(to_json(data))
+		file.close()	
+		
+		$Pool/TextureRect/CountLabel.text = str(Global.data["pendederan"]["ikankecil"] + Global.data["pendederan"]["ikanbesar"]) + " / 20"
 	
 
 
@@ -146,3 +151,51 @@ func _on_MovePool_pressed():
 		x.queue_free()
 	fishCount = 0
 	get_tree().change_scene("res://pembesaran_pool/Pembesaran.tscn")
+
+
+func _on_FoodShop_pressed():
+	var currMoney = Global.data.money - 18000
+	$Food/FoodBadge/FoodCount.text = str(Global.data.foodsA + 1)
+	$Money/MoneyBadge/MoneyLabel.text = str(currMoney)
+	var file = File.new()
+	
+	var data = Global.data
+	data["foodsA"] = Global.data.foodsA + 1
+	data["money"] = currMoney
+	if file.open("res://storage/storage.json",File.WRITE) != 0:
+		print("error opening file")
+		return
+	file.store_line(to_json(data))
+	file.close()	
+
+
+func _on_Vit25_pressed():
+	var currMoney = Global.data.money - 10000
+	$Vitamin/VitBadge/VitBadgeLabel.text = str(Global.data.vitaminA + Global.data.vitaminB + 1)
+	$Money/MoneyBadge/MoneyLabel.text = str(currMoney)
+	var file = File.new()
+	
+	var data = Global.data
+	data["vitaminA"] = Global.data.vitaminA + 1
+	data["money"] = currMoney
+	if file.open("res://storage/storage.json",File.WRITE) != 0:
+		print("error opening file")
+		return
+	file.store_line(to_json(data))
+	file.close()	
+
+
+func _on_Vit50_pressed():
+	var currMoney = Global.data.money - 20000
+	$Vitamin/VitBadge/VitBadgeLabel.text = str(Global.data.vitaminA + Global.data.vitaminB + 1)
+	$Money/MoneyBadge/MoneyLabel.text = str(currMoney)
+	var file = File.new()
+	
+	var data = Global.data
+	data["vitaminB"] = Global.data.vitaminB + 1
+	data["money"] = currMoney
+	if file.open("res://storage/storage.json",File.WRITE) != 0:
+		print("error opening file")
+		return
+	file.store_line(to_json(data))
+	file.close()	

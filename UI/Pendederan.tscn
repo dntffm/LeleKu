@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://assets/Move Pool.png" type="Texture" id=1]
 [ext_resource path="res://assets/grass-kol-1.png" type="Texture" id=2]
@@ -24,7 +24,6 @@
 [ext_resource path="res://assets/shop-4.png" type="Texture" id=24]
 [ext_resource path="res://assets/shop-1.png" type="Texture" id=25]
 [ext_resource path="res://assets/25%.png" type="Texture" id=26]
-[ext_resource path="res://assets/shop-2.png" type="Texture" id=27]
 [ext_resource path="res://UI/Badge.tscn" type="PackedScene" id=28]
 [ext_resource path="res://font/SUPER BOOM.ttf" type="DynamicFontData" id=29]
 [ext_resource path="res://UI/Pakan.tscn" type="PackedScene" id=30]
@@ -84,10 +83,6 @@ size = 20
 font_data = ExtResource( 29 )
 
 [sub_resource type="DynamicFont" id=17]
-size = 20
-font_data = ExtResource( 29 )
-
-[sub_resource type="DynamicFont" id=18]
 size = 20
 font_data = ExtResource( 29 )
 
@@ -202,13 +197,13 @@ margin_top = -29.0
 margin_right = 120.0
 margin_bottom = 8.0
 
-[node name="FoodBadgeLabel" type="Label" parent="Food/FoodBadge"]
+[node name="FoodCount" type="Label" parent="Food/FoodBadge"]
 margin_left = 15.0
 margin_top = 10.0594
 margin_right = 28.0
 margin_bottom = 29.0594
 custom_fonts/font = SubResource( 3 )
-text = "2"
+text = "0"
 
 [node name="Trash" type="TextureButton" parent="."]
 margin_left = 496.03
@@ -258,6 +253,9 @@ margin_right = 58.474
 margin_bottom = 25.9522
 custom_fonts/font = SubResource( 4 )
 text = "100K"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Vitamin" type="TextureButton" parent="."]
 margin_left = 336.739
@@ -452,19 +450,6 @@ custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Food"
 
-[node name="LabelShop6" type="Label" parent="ModalShop"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 117.331
-margin_top = 22.7211
-margin_right = 157.331
-margin_bottom = 39.7211
-custom_fonts/font = SubResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Food"
-
 [node name="CloseShop" parent="ModalShop" instance=ExtResource( 16 )]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -534,9 +519,9 @@ text = "20K"
 
 [node name="Seeds" type="TextureButton" parent="ModalShop"]
 margin_left = 355.128
-margin_top = 219.256
+margin_top = 217.758
 margin_right = 449.128
-margin_bottom = 315.256
+margin_bottom = 313.758
 rect_scale = Vector2( 0.5, 0.5 )
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 24 )
@@ -558,7 +543,7 @@ margin_bottom = 23.0
 custom_fonts/font = SubResource( 16 )
 text = "300"
 
-[node name="Food" type="TextureButton" parent="ModalShop"]
+[node name="FoodShop" type="TextureButton" parent="ModalShop"]
 margin_left = 415.564
 margin_top = 217.967
 margin_right = 500.564
@@ -570,45 +555,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" parent="ModalShop/Food" instance=ExtResource( 28 )]
+[node name="Sprite" parent="ModalShop/FoodShop" instance=ExtResource( 28 )]
 margin_left = 72.0
 margin_top = -12.0
 margin_right = 110.0
 margin_bottom = 16.0
 
-[node name="Label" type="Label" parent="ModalShop/Food/Sprite"]
+[node name="Label" type="Label" parent="ModalShop/FoodShop/Sprite"]
 margin_left = 4.0
 margin_top = 2.0
 margin_right = 44.0
 margin_bottom = 23.0
 custom_fonts/font = SubResource( 17 )
 text = "18K"
-
-[node name="Food2" type="TextureButton" parent="ModalShop"]
-margin_left = 472.865
-margin_top = 218.541
-margin_right = 560.865
-margin_bottom = 320.541
-rect_scale = Vector2( 0.5, 0.5 )
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 27 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" parent="ModalShop/Food2" instance=ExtResource( 28 )]
-margin_left = 71.7344
-margin_top = -10.3826
-margin_right = 109.734
-margin_bottom = 17.6174
-
-[node name="Label" type="Label" parent="ModalShop/Food2/Sprite"]
-margin_left = 4.0
-margin_top = 2.0
-margin_right = 44.0
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 18 )
-text = "10K"
 
 [node name="ModalFood" parent="." instance=ExtResource( 17 )]
 
@@ -726,7 +685,10 @@ z_index = 5
 [connection signal="pressed" from="Pause/Music" to="." method="_on_Music_pressed"]
 [connection signal="pressed" from="Pause/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="ModalShop/CloseShop" to="." method="_on_CloseShop_pressed"]
+[connection signal="pressed" from="ModalShop/Vit25%" to="." method="_on_Vit25_pressed"]
+[connection signal="pressed" from="ModalShop/Vit50%" to="." method="_on_Vit50_pressed"]
 [connection signal="pressed" from="ModalShop/Seeds" to="." method="_on_Seeds_pressed"]
+[connection signal="pressed" from="ModalShop/FoodShop" to="." method="_on_FoodShop_pressed"]
 [connection signal="pressed" from="ModalFood/YellowFood" to="." method="_on_YellowFood_pressed"]
 [connection signal="pressed" from="ModalFood/FoodClose" to="." method="_on_FoodClose_pressed"]
 [connection signal="pressed" from="ModalVitamins/VitaminClose" to="." method="_on_VitaminClose_pressed"]

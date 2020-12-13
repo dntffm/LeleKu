@@ -8,6 +8,7 @@ var leleNode = preload("res://lele/Lele.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Money/Money/MoneyLabel.text = str(Global.data.money)
 	var fishes = Global.data["pembesaran"]["ikanbesar"] + Global.data["pembesaran"]["ikankecil"]
 	print(fishes)
 	for x in range(fishes):
@@ -67,3 +68,19 @@ func _on_No_pressed():
 
 func _on_MovePool_pressed():
 	get_tree().change_scene("res://UI/Pendederan.tscn")
+
+
+func _on_Food2_pressed():
+	var currMoney = Global.data.money - 18000
+	$Food/FoodBadge/FoodBadgeLabel.text = str(Global.data.foodsB + 1)
+	$Money/Money/MoneyLabel.text = str(currMoney)
+	var file = File.new()
+	
+	var data = Global.data
+	data["foodsB"] = Global.data.foodsB + 1
+	data["money"] = currMoney
+	if file.open("res://storage/storage.json",File.WRITE) != 0:
+		print("error opening file")
+		return
+	file.store_line(to_json(data))
+	file.close()	

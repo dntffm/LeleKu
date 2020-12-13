@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/Move Pool.png" type="Texture" id=1]
 [ext_resource path="res://assets/pembesaran.png" type="Texture" id=2]
@@ -33,6 +33,10 @@ font_data = ExtResource( 18 )
 size = 18
 font_data = ExtResource( 29 )
 
+[sub_resource type="DynamicFont" id=12]
+size = 23
+font_data = ExtResource( 29 )
+
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 18 )
 
@@ -65,15 +69,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Pool" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1440.0
-margin_bottom = 1024.0
+margin_left = 4.16327
+margin_top = 0.667419
+margin_right = 1444.17
+margin_bottom = 1024.67
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 __meta__ = {
@@ -81,13 +86,13 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 32.4303
-margin_top = 54.0293
-margin_right = 152.431
-margin_bottom = 71.0293
+margin_left = 32.0
+margin_top = 53.0
+margin_right = 152.0
+margin_bottom = 71.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Kolam Pendederan"
+text = "Kolam Pembesaran"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -140,7 +145,10 @@ margin_top = 10.0594
 margin_right = 28.0
 margin_bottom = 29.0594
 custom_fonts/font = SubResource( 2 )
-text = "2"
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Trash" type="TextureButton" parent="."]
 margin_left = 496.03
@@ -177,11 +185,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" parent="Money" instance=ExtResource( 28 )]
-margin_left = 34.0385
-margin_top = -0.667419
-margin_right = 58.0385
-margin_bottom = 23.3326
+[node name="Money" parent="Money" instance=ExtResource( 28 )]
+margin_left = -1.811
+margin_top = -17.102
+margin_right = 62.189
+margin_bottom = 15.898
+
+[node name="MoneyLabel" type="Label" parent="Money/Money"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 12 )
 
 [node name="Vitamin" type="TextureButton" parent="."]
 margin_left = 336.739
@@ -240,6 +253,7 @@ custom_fonts/font = SubResource( 4 )
 text = "No"
 
 [node name="Teks" type="Label" parent="ModalDialog"]
+visible = false
 margin_left = 334.677
 margin_top = 201.815
 margin_right = 374.677
@@ -350,19 +364,6 @@ custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Vit"
 
-[node name="LabelShop5" type="Label" parent="ModalShop"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 55.5953
-margin_top = 22.7211
-margin_right = 95.5953
-margin_bottom = 39.7211
-custom_fonts/font = SubResource( 10 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Food"
-
 [node name="LabelShop6" type="Label" parent="ModalShop"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -411,18 +412,6 @@ margin_bottom = 342.857
 rect_scale = Vector2( 0.5, 0.5 )
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 23 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Food" type="TextureButton" parent="ModalShop"]
-margin_left = 415.564
-margin_top = 217.967
-margin_right = 500.564
-margin_bottom = 319.967
-rect_scale = Vector2( 0.5, 0.5 )
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -554,5 +543,6 @@ z_index = 5
 [connection signal="pressed" from="Pause/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Pause/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="ModalShop/CloseShop" to="." method="_on_CloseShop_pressed"]
+[connection signal="pressed" from="ModalShop/Food2" to="." method="_on_Food2_pressed"]
 [connection signal="pressed" from="ModalFood/FoodClose" to="." method="_on_FoodClose_pressed"]
 [connection signal="pressed" from="ModalVitamins/VitaminClose" to="." method="_on_VitaminClose_pressed"]

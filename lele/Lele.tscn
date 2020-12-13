@@ -9,7 +9,10 @@
 [ext_resource path="res://assets/New folder/lele9-min.png" type="Texture" id=8]
 [ext_resource path="res://assets/New folder/lele6-min.png" type="Texture" id=10]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 19.3259, 12.0312 )
+
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 8 ) ],
 "loop": true,
@@ -17,26 +20,19 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.345098, 0.654902, 0.196078, 1 )
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 70
 corner_radius_top_right = 70
 corner_radius_bottom_right = 70
 corner_radius_bottom_left = 70
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
@@ -45,28 +41,45 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 19.3259, 12.0312 )
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -20.8259, 21.0312 )
+shape = SubResource( 1 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.366377, 0.853955 )
 rotation = 1.5708
 scale = Vector2( 0.4, 0.4 )
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "swim"
 frame = 3
 playing = true
 centered = false
+
+[node name="Button" type="Button" parent="AnimatedSprite"]
+margin_right = 90.0
+margin_bottom = 90.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Indicator" type="Panel" parent="AnimatedSprite"]
 margin_left = 10.5
 margin_top = 14.75
 margin_right = 19.5
 margin_bottom = 56.75
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -79,7 +92,7 @@ margin_top = -68.9427
 margin_right = -7.51251
 margin_bottom = 4.05732
 rect_pivot_offset = Vector2( 68.0479, 36.5 )
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -89,7 +102,7 @@ margin_left = 43.884
 margin_top = 53.5787
 margin_right = 61.884
 margin_bottom = 71.5787
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -99,11 +112,5 @@ margin_left = 24.1639
 margin_top = 13.1499
 margin_right = 36.1639
 margin_bottom = 25.1499
-custom_styles/panel = SubResource( 5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -20.8259, 21.0312 )
-shape = SubResource( 6 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 73.9989, 18.4997 )
+custom_styles/panel = SubResource( 6 )
+[connection signal="pressed" from="AnimatedSprite/Button" to="." method="_on_Button_pressed"]

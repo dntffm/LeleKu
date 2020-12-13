@@ -29,6 +29,10 @@ func _on_Button_pressed():
 		var data = {
 			"username" : lineEditText,
 			"money" : 100000,
+			"foodsA" : 0,
+			"foodsB" : 0,
+			"vitaminA" : 0,
+			"vitaminB" : 0,
 			"pendederan" : {
 				"ikankecil" : 0,
 				"ikanbesar" : 0
