@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/Move Pool.png" type="Texture" id=1]
 [ext_resource path="res://assets/pembesaran.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/suplement.png" type="Texture" id=8]
 [ext_resource path="res://assets/pan.png" type="Texture" id=9]
 [ext_resource path="res://assets/coin.png" type="Texture" id=10]
+[ext_resource path="res://assets/icons8_whole_fish_100px.png" type="Texture" id=11]
 [ext_resource path="res://UI/PauseDialog.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/icons8_delete_127px_1.png" type="Texture" id=13]
 [ext_resource path="res://assets/icons8_delete_127px_3.png" type="Texture" id=14]
@@ -33,12 +34,9 @@ font_data = ExtResource( 18 )
 size = 18
 font_data = ExtResource( 29 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=3]
 size = 23
 font_data = ExtResource( 29 )
-
-[sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 18 )
@@ -64,9 +62,17 @@ font_data = ExtResource( 18 )
 [sub_resource type="DynamicFont" id=11]
 font_data = ExtResource( 18 )
 
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 38
+font_data = ExtResource( 29 )
+
 [node name="Pembesaran" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -460.64, -36.5099 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -194,7 +200,7 @@ margin_bottom = 15.898
 [node name="MoneyLabel" type="Label" parent="Money/Money"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 3 )
 
 [node name="Vitamin" type="TextureButton" parent="."]
 margin_left = 336.739
@@ -241,7 +247,7 @@ margin_left = 227.28
 margin_top = 276.561
 margin_right = 301.28
 margin_bottom = 313.561
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Yes"
 
 [node name="No" parent="ModalDialog" instance=ExtResource( 16 )]
@@ -249,7 +255,7 @@ margin_left = 405.55
 margin_top = 274.879
 margin_right = 479.55
 margin_bottom = 311.879
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "No"
 
 [node name="Teks" type="Label" parent="ModalDialog"]
@@ -258,7 +264,7 @@ margin_left = 334.677
 margin_top = 201.815
 margin_right = 374.677
 margin_bottom = 215.815
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Quit ?"
 
@@ -282,7 +288,7 @@ margin_left = 615.438
 margin_top = 67.762
 margin_right = 689.438
 margin_bottom = 104.762
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "Resume"
 
 [node name="Music" parent="Pause" instance=ExtResource( 15 )]
@@ -290,7 +296,7 @@ margin_left = 602.53
 margin_top = 116.684
 margin_right = 700.53
 margin_bottom = 153.684
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 toggle_mode = true
 text = "  Music"
 align = 0
@@ -305,7 +311,7 @@ margin_left = 604.0
 margin_top = 164.0
 margin_right = 703.0
 margin_bottom = 201.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 toggle_mode = true
 text = "  Sound"
 align = 0
@@ -320,7 +326,7 @@ margin_left = 614.092
 margin_top = 449.785
 margin_right = 688.092
 margin_bottom = 486.785
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Quit"
 
 [node name="ModalShop" parent="." instance=ExtResource( 17 )]
@@ -334,7 +340,7 @@ margin_left = -20.0
 margin_top = -116.5
 margin_right = 20.0
 margin_bottom = -99.5
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Shop"
 
@@ -347,7 +353,7 @@ margin_left = -156.071
 margin_top = 26.501
 margin_right = -116.071
 margin_bottom = 43.501
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Vit"
 
@@ -360,7 +366,7 @@ margin_left = -76.0665
 margin_top = 23.9811
 margin_right = -36.0665
 margin_bottom = 40.9811
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Vit"
 
@@ -373,7 +379,7 @@ margin_left = 117.331
 margin_top = 22.7211
 margin_right = 157.331
 margin_bottom = 39.7211
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Food"
 __meta__ = {
@@ -389,7 +395,7 @@ margin_left = -37.0
 margin_top = -189.0
 margin_right = 37.0
 margin_bottom = -152.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Close"
 
 [node name="Vit25%" type="TextureButton" parent="ModalShop"]
@@ -453,7 +459,7 @@ margin_left = -34.5
 margin_top = -112.5
 margin_right = 34.5
 margin_bottom = -95.5
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Food Items"
 __meta__ = {
@@ -469,7 +475,7 @@ margin_left = -37.0
 margin_top = -189.0
 margin_right = 37.0
 margin_bottom = -152.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Close"
 
 [node name="ModalVitamins" parent="." instance=ExtResource( 17 )]
@@ -509,7 +515,7 @@ margin_left = -49.0
 margin_top = -107.5
 margin_right = 49.0
 margin_bottom = -90.5
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Vitamin Items"
 __meta__ = {
@@ -525,13 +531,30 @@ margin_left = -37.0
 margin_top = -189.0
 margin_right = 37.0
 margin_bottom = -152.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Close"
 
 [node name="Area2D" parent="." instance=ExtResource( 30 )]
 visible = false
 position = Vector2( 429.633, 428.373 )
 z_index = 5
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 26.4866
+margin_top = -1.05945
+margin_right = 223.487
+margin_bottom = 98.9406
+rect_scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="TextureRect"]
+margin_left = 105.829
+margin_top = 33.7027
+margin_right = 187.829
+margin_bottom = 114.703
+custom_fonts/font = SubResource( 13 )
+text = "1/20
+"
 [connection signal="pressed" from="PauseBtn" to="." method="_on_PauseBtn_pressed"]
 [connection signal="pressed" from="MovePool" to="." method="_on_MovePool_pressed"]
 [connection signal="pressed" from="Food" to="." method="_on_Food_pressed"]

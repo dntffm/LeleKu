@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://assets/New folder/lele2-min.png" type="Texture" id=2]
+[ext_resource path="res://assets/food.png" type="Texture" id=3]
 [ext_resource path="res://assets/New folder/lele5-min.png" type="Texture" id=4]
 [ext_resource path="res://assets/New folder/lele1-min.png" type="Texture" id=5]
 [ext_resource path="res://assets/New folder/lele7-min.png" type="Texture" id=6]
 [ext_resource path="res://assets/New folder/lele8-min.png" type="Texture" id=7]
 [ext_resource path="res://assets/New folder/lele9-min.png" type="Texture" id=8]
+[ext_resource path="res://assets/icons8_checked_radio_button_100px.png" type="Texture" id=9]
 [ext_resource path="res://assets/New folder/lele6-min.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -28,20 +30,42 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0.686275, 0.431373, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.882353, 0.815686, 0.0823529, 1 )
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.894118, 0.341176, 0.341176, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 70
 corner_radius_top_right = 70
 corner_radius_bottom_right = 70
 corner_radius_bottom_left = 70
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 50
 corner_radius_top_right = 50
@@ -62,7 +86,7 @@ rotation = 1.5708
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 2 )
 animation = "swim"
-frame = 3
+frame = 4
 playing = true
 centered = false
 
@@ -75,6 +99,7 @@ __meta__ = {
 }
 
 [node name="Indicator" type="Panel" parent="AnimatedSprite"]
+visible = false
 margin_left = 10.5
 margin_top = 14.75
 margin_right = 19.5
@@ -84,15 +109,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Lifetime" type="ProgressBar" parent="AnimatedSprite"]
+visible = false
+margin_left = 6.087
+margin_top = 11.251
+margin_right = 15.087
+margin_bottom = 57.251
+custom_styles/fg = SubResource( 4 )
+min_value = 100.0
+max_value = 0.0
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lifetime2" type="ProgressBar" parent="AnimatedSprite"]
+visible = false
+margin_left = 7.0
+margin_top = 21.0
+margin_right = 16.0
+margin_bottom = 57.0
+custom_styles/fg = SubResource( 8 )
+min_value = 50.0
+max_value = 0.0
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lifetime3" type="ProgressBar" parent="AnimatedSprite"]
+margin_left = 7.0
+margin_top = 41.0
+margin_right = 16.0
+margin_bottom = 57.0
+custom_styles/fg = SubResource( 9 )
+min_value = 100.0
+max_value = 0.0
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="FeedIndicator" type="Panel" parent="AnimatedSprite"]
+visible = false
 anchor_top = -0.0350771
 anchor_bottom = -0.0350771
-margin_left = -48.5125
-margin_top = -68.9427
-margin_right = -7.51251
-margin_bottom = 4.05732
+margin_left = -51.2298
+margin_top = -75.8736
+margin_right = -7.22977
+margin_bottom = 2.12644
 rect_pivot_offset = Vector2( 68.0479, 36.5 )
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -102,7 +172,7 @@ margin_left = 43.884
 margin_top = 53.5787
 margin_right = 61.884
 margin_bottom = 71.5787
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -112,5 +182,48 @@ margin_left = 24.1639
 margin_top = 13.1499
 margin_right = 36.1639
 margin_bottom = 25.1499
+custom_styles/panel = SubResource( 7 )
+
+[node name="food" type="Sprite" parent="AnimatedSprite/FeedIndicator/Panel/Panel"]
+position = Vector2( -47.4673, -22.8971 )
+rotation = -3.01336e-13
+scale = Vector2( 0.377276, 0.377276 )
+texture = ExtResource( 3 )
+
+[node name="MovePoolIndicator" type="Panel" parent="AnimatedSprite"]
+visible = false
+anchor_top = -0.0350771
+anchor_bottom = -0.0350771
+margin_left = -51.2298
+margin_top = -75.8736
+margin_right = -7.22977
+margin_bottom = 2.12644
+rect_pivot_offset = Vector2( 68.0479, 36.5 )
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="AnimatedSprite/MovePoolIndicator"]
+margin_left = 43.884
+margin_top = 53.5787
+margin_right = 61.884
+margin_bottom = 71.5787
 custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="AnimatedSprite/MovePoolIndicator/Panel"]
+margin_left = 24.1639
+margin_top = 13.1499
+margin_right = 36.1639
+margin_bottom = 25.1499
+custom_styles/panel = SubResource( 7 )
+
+[node name="food" type="Sprite" parent="AnimatedSprite/MovePoolIndicator/Panel/Panel"]
+position = Vector2( -47.4673, -22.8971 )
+rotation = -1.5708
+scale = Vector2( 0.377276, 0.377276 )
+texture = ExtResource( 9 )
 [connection signal="pressed" from="AnimatedSprite/Button" to="." method="_on_Button_pressed"]

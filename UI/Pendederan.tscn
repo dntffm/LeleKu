@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/Move Pool.png" type="Texture" id=1]
 [ext_resource path="res://assets/grass-kol-1.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://font/AmazingKids.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://assets/icons8_toggle_on_127px.png" type="Texture" id=19]
 [ext_resource path="res://assets/icons8_whole_fish_100px.png" type="Texture" id=20]
+[ext_resource path="res://icons8_heart_100px_1.png" type="Texture" id=21]
 [ext_resource path="res://assets/shop-3.png" type="Texture" id=23]
 [ext_resource path="res://assets/shop-4.png" type="Texture" id=24]
 [ext_resource path="res://assets/shop-1.png" type="Texture" id=25]
@@ -131,6 +132,34 @@ text = "1 / 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pool"]
+margin_left = 33.0
+margin_top = 75.0
+margin_right = 341.0
+margin_bottom = 175.0
+rect_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="TextureRect" parent="Pool/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+texture = ExtResource( 21 )
+
+[node name="Health2" type="TextureRect" parent="Pool/HBoxContainer"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 100.0
+texture = ExtResource( 21 )
+
+[node name="Health3" type="TextureRect" parent="Pool/HBoxContainer"]
+margin_left = 208.0
+margin_right = 308.0
+margin_bottom = 100.0
+texture = ExtResource( 21 )
+stretch_mode = 3
 
 [node name="Grass" type="TextureRect" parent="."]
 margin_left = 45.7382

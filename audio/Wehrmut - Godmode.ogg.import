@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Wehrmut - Godmode.ogg-9bceed0f5a087facf6fb5909af57ddba.oggstr"
+
+[deps]
+
+source_file="res://audio/Wehrmut - Godmode.ogg"
+dest_files=[ "res://.import/Wehrmut - Godmode.ogg-9bceed0f5a087facf6fb5909af57ddba.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

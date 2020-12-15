@@ -8,6 +8,7 @@ var leleNode = preload("res://lele/Lele.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$TextureRect/Label.text = str(Global.data["pembesaran"]["ikanbesar"]) + " / 20"
 	$Money/Money/MoneyLabel.text = str(Global.data.money)
 	var fishes = Global.data["pembesaran"]["ikanbesar"] + Global.data["pembesaran"]["ikankecil"]
 	print(fishes)
@@ -16,8 +17,8 @@ func _ready():
 		var lele = leleNode.instance()
 		lele.position = Vector2(195+randi()%200+5,310+randi()%200+5)
 		lele.z_index = 0	
-		lele.scale.x = 2.0
-		lele.scale.y = 2.0
+		lele.scale.x = 3.0
+		lele.scale.y = 3.0
 		parent.add_child(lele)
 
 

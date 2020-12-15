@@ -19,9 +19,11 @@ func load_data():
 	return data
 	
 func _on_Button_pressed():
+	$AudioStreamPlayer.play()
 	var lineEditText = get_node("LineEdit").text
 	if(lineEditText == ""):
 		profileDialogPopUp.show()
+		$AudioStreamPlayer.stop()
 		pass
 	else:
 		var file = File.new()
