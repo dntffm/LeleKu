@@ -36,7 +36,7 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.882353, 0.815686, 0.0823529, 1 )
 border_blend = true
 corner_radius_top_left = 30
@@ -44,28 +44,28 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.894118, 0.341176, 0.341176, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 70
 corner_radius_top_right = 70
 corner_radius_bottom_right = 70
 corner_radius_bottom_left = 70
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 50
 corner_radius_top_right = 50
@@ -86,7 +86,7 @@ rotation = 1.5708
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 2 )
 animation = "swim"
-frame = 4
+frame = 2
 playing = true
 centered = false
 
@@ -130,7 +130,7 @@ margin_left = 7.0
 margin_top = 21.0
 margin_right = 16.0
 margin_bottom = 57.0
-custom_styles/fg = SubResource( 8 )
+custom_styles/fg = SubResource( 5 )
 min_value = 50.0
 max_value = 0.0
 value = 50.0
@@ -144,7 +144,7 @@ margin_left = 7.0
 margin_top = 41.0
 margin_right = 16.0
 margin_bottom = 57.0
-custom_styles/fg = SubResource( 9 )
+custom_styles/fg = SubResource( 6 )
 min_value = 100.0
 max_value = 0.0
 value = 100.0
@@ -162,7 +162,7 @@ margin_top = -75.8736
 margin_right = -7.22977
 margin_bottom = 2.12644
 rect_pivot_offset = Vector2( 68.0479, 36.5 )
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -172,7 +172,7 @@ margin_left = 43.884
 margin_top = 53.5787
 margin_right = 61.884
 margin_bottom = 71.5787
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -182,7 +182,7 @@ margin_left = 24.1639
 margin_top = 13.1499
 margin_right = 36.1639
 margin_bottom = 25.1499
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 9 )
 
 [node name="food" type="Sprite" parent="AnimatedSprite/FeedIndicator/Panel/Panel"]
 position = Vector2( -47.4673, -22.8971 )
@@ -199,7 +199,7 @@ margin_top = -75.8736
 margin_right = -7.22977
 margin_bottom = 2.12644
 rect_pivot_offset = Vector2( 68.0479, 36.5 )
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -209,7 +209,7 @@ margin_left = 43.884
 margin_top = 53.5787
 margin_right = 61.884
 margin_bottom = 71.5787
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -219,7 +219,7 @@ margin_left = 24.1639
 margin_top = 13.1499
 margin_right = 36.1639
 margin_bottom = 25.1499
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 9 )
 
 [node name="food" type="Sprite" parent="AnimatedSprite/MovePoolIndicator/Panel/Panel"]
 position = Vector2( -47.4673, -22.8971 )

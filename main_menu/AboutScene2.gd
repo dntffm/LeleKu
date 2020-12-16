@@ -18,3 +18,15 @@ func _ready():
 
 func _on_Button_pressed():
 	get_tree().change_scene("res://main_menu/MainMenu.tscn")
+
+
+func _on_next_pressed():
+	get_tree().change_scene("res://main_menu/AboutScene2.tscn")
+
+
+func _on_prev_pressed():
+	get_tree().change_scene("res://main_menu/AboutScene.tscn")
+
+
+func _on_next3_pressed():
+	get_tree().change_scene("res://main_menu/AboutScene3.tscn")

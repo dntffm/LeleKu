@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://assets/Move Pool.png" type="Texture" id=1]
 [ext_resource path="res://assets/grass-kol-1.png" type="Texture" id=2]
@@ -85,6 +85,12 @@ font_data = ExtResource( 29 )
 
 [sub_resource type="DynamicFont" id=17]
 size = 20
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=18]
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=19]
 font_data = ExtResource( 29 )
 
 [node name="Pendederan" type="Control"]
@@ -296,9 +302,9 @@ texture_normal = ExtResource( 8 )
 
 [node name="VitBadge" parent="Vitamin" instance=ExtResource( 28 )]
 margin_left = 106.132
-margin_top = -25.146
+margin_top = -21.9712
 margin_right = 143.132
-margin_bottom = 11.854
+margin_bottom = 15.0288
 
 [node name="VitBadgeLabel" type="Label" parent="Vitamin/VitBadge"]
 margin_left = 15.0
@@ -310,10 +316,11 @@ text = "2"
 
 [node name="Clean" type="TextureButton" parent="."]
 margin_left = 185.319
-margin_top = 439.126
+margin_top = 440.624
 margin_right = 283.319
-margin_bottom = 543.126
+margin_bottom = 544.624
 rect_scale = Vector2( 0.5, 0.5 )
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 9 )
 
 [node name="ModalDialog" parent="." instance=ExtResource( 17 )]
@@ -643,6 +650,7 @@ custom_fonts/font = SubResource( 13 )
 text = "Close"
 
 [node name="ModalVitamins" parent="." instance=ExtResource( 17 )]
+visible = true
 
 [node name="50%" type="TextureButton" parent="ModalVitamins"]
 anchor_left = 0.5
@@ -659,6 +667,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="vit50badge" parent="ModalVitamins/50%" instance=ExtResource( 28 )]
+margin_left = 60.1684
+margin_top = -18.4949
+margin_right = 99.1684
+margin_bottom = 20.5051
+
+[node name="Label" type="Label" parent="ModalVitamins/50%/vit50badge"]
+margin_left = 14.2142
+margin_top = 10.8878
+margin_right = 49.2142
+margin_bottom = 35.8878
+custom_fonts/font = SubResource( 18 )
+text = "0"
+
 [node name="25%" type="TextureButton" parent="ModalVitamins"]
 margin_left = 363.396
 margin_top = 235.201
@@ -669,6 +691,20 @@ texture_normal = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="vit25badge" parent="ModalVitamins/25%" instance=ExtResource( 28 )]
+margin_left = 149.0
+margin_top = -13.0
+margin_right = 184.0
+margin_bottom = 22.0
+
+[node name="Label" type="Label" parent="ModalVitamins/25%/vit25badge"]
+margin_left = 12.2704
+margin_top = 8.05615
+margin_right = 40.2704
+margin_bottom = 30.0562
+custom_fonts/font = SubResource( 19 )
+text = "0"
 
 [node name="VitaminLabel" type="Label" parent="ModalVitamins"]
 anchor_left = 0.5
@@ -702,11 +738,22 @@ text = "Close"
 visible = false
 position = Vector2( 429.633, 428.373 )
 z_index = 5
+
+[node name="Kotoran" type="TextureRect" parent="."]
+visible = false
+margin_left = 130.0
+margin_top = 129.0
+margin_right = 560.0
+margin_bottom = 337.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="PauseBtn" to="." method="_on_PauseBtn_pressed"]
 [connection signal="pressed" from="MovePool" to="." method="_on_MovePool_pressed"]
 [connection signal="pressed" from="Food" to="." method="_on_Food_pressed"]
 [connection signal="pressed" from="Shop" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Vitamin" to="." method="_on_Vitamin_pressed"]
+[connection signal="pressed" from="Clean" to="." method="_on_Clean_pressed"]
 [connection signal="pressed" from="ModalDialog/Yes" to="." method="_on_Yes_pressed"]
 [connection signal="pressed" from="ModalDialog/No" to="." method="_on_No_pressed"]
 [connection signal="pressed" from="Pause/Close" to="." method="_on_Close_pressed"]
@@ -720,4 +767,5 @@ z_index = 5
 [connection signal="pressed" from="ModalShop/FoodShop" to="." method="_on_FoodShop_pressed"]
 [connection signal="pressed" from="ModalFood/YellowFood" to="." method="_on_YellowFood_pressed"]
 [connection signal="pressed" from="ModalFood/FoodClose" to="." method="_on_FoodClose_pressed"]
+[connection signal="pressed" from="ModalVitamins/25%" to="." method="_on_25_pressed"]
 [connection signal="pressed" from="ModalVitamins/VitaminClose" to="." method="_on_VitaminClose_pressed"]

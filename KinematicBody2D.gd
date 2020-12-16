@@ -13,11 +13,13 @@ func _process(delta):
 	progressVal = progressVal - 0.01
 	$AnimatedSprite/Lifetime.value = progressVal
 	
+	
 	if hungryVal > 10:
 		$AnimatedSprite/FeedIndicator.show()
 	else:
 		$AnimatedSprite/FeedIndicator.hide()
 		hungryVal = hungryVal + 0.01
+		
 	if progressVal > 50:
 		$AnimatedSprite/Lifetime.show()
 		$AnimatedSprite/Lifetime2.hide()
@@ -63,5 +65,8 @@ func _on_Button_pressed():
 			print("error opening file")
 			return
 		file.store_line(to_json(data))
-		file.close()	
+		file.close()
+		
+	if Global.supplementterbang:
+		self.progressVal = self.progressVal + 75	
 	

@@ -5,19 +5,22 @@ var ClosePauseDialog
 var leleNode = preload("res://lele/Lele.tscn")
 var pakanNode = preload("res://UI/Pakan.tscn")
 var foodButton = false
+var supplementButton = false
 
+var adddirt = true
 var foodCount = 0
 var fishCount = 0
 var vitCount = 0
 var path = "res://storage/storage.json"
-
+var dirtimer = 0
 
 func _ready():
 	$Money/MoneyBadge/MoneyLabel.text = str(Global.data.money)
 	$Pool/TextureRect/CountLabel.text = str(Global.data["pendederan"]["ikankecil"]) + " / 20"
 	$Food/FoodBadge/FoodCount.text = str(Global.data.foodsA)
-	$Vitamin/VitBadge/VitBadgeLabel.text = str(Global.data.vitaminA + Global.data.vitaminB + 1)
-	
+	$Vitamin/VitBadge/VitBadgeLabel.text = str(Global.data.vitaminA + Global.data.vitaminB)
+	get_node("ModalVitamins/25%/vit25badge/Label").text = str(Global.data.vitaminA)
+	get_node("ModalVitamins/50%/vit50badge/Label").text = str(Global.data.vitaminB)
 	var health = TextureRect.new()
 	health.texture = load('res://assets/health.png')
 	health.rect_scale = Vector2(0.2,0.2)
@@ -38,9 +41,20 @@ func _ready():
 	#ClosePauseDialog = get_node("Pause/ColorRect/Panel/CloseDialogButton")
 
 func _process(delta):
+	var kotorannode = preload("res://UI/Dirt.tscn")
+	var kotoran = kotorannode.instance()
+	kotoran.position = Vector2(rand_range(199.0,1122.0),rand_range(60.0,572.0))
+	
+	if adddirt:
+		dirtimer = dirtimer+1
+		
+	if dirtimer > 100 :
+		dirtimer = 0
+		$Kotoran.add_child(kotoran)
 	if(foodButton):
 		$Area2D.position = get_viewport().get_mouse_position()
-		
+	if(supplementButton):
+		$Area2D.position = get_viewport().get_mouse_position()		
 	
 
 func _on_PauseBtn_pressed():
@@ -173,12 +187,12 @@ func _on_FoodShop_pressed():
 	var currMoney = Global.data.money - 18000
 	
 	if currMoney > 0:
-		$Food/FoodBadge/FoodCount.text = str(Global.data.foodsA + 100)
+		$Food/FoodBadge/FoodCount.text = str(Global.data.foodsA + 20)
 		$Money/MoneyBadge/MoneyLabel.text = str(currMoney)
 		var file = File.new()
 		
 		var data = Global.data
-		data["foodsA"] = Global.data.foodsA + 100
+		data["foodsA"] = Global.data.foodsA + 20
 		data["money"] = currMoney
 		if file.open("res://storage/storage.json",File.WRITE) != 0:
 			print("error opening file")
@@ -193,6 +207,7 @@ func _on_Vit25_pressed():
 	var currMoney = Global.data.money - 10000
 	if currMoney > 0:
 		$Vitamin/VitBadge/VitBadgeLabel.text = str(Global.data.vitaminA + Global.data.vitaminB + 1)
+		get_node("ModalVitamins/25%/vit25badge/Label").text = str(Global.data.vitaminA+ 1) 
 		$Money/MoneyBadge/MoneyLabel.text = str(currMoney)
 		var file = File.new()
 		
@@ -215,6 +230,7 @@ func _on_Vit50_pressed():
 		
 		$Vitamin/VitBadge/VitBadgeLabel.text = str(Global.data.vitaminA + Global.data.vitaminB + 1)
 		$Money/MoneyBadge/MoneyLabel.text = str(currMoney)
+		get_node("ModalVitamins/50%/vit50badge/Label").text = str(Global.data.vitaminB+ 1) 
 		var file = File.new()
 		
 		var data = Global.data
@@ -227,3 +243,23 @@ func _on_Vit50_pressed():
 		file.close()	
 	else:
 		print("money gak cukup")
+
+
+func _on_Clean_pressed():
+	adddirt = false
+	for x in $Kotoran.get_children():
+		x.queue_free()
+	adddirt = true
+	
+
+
+func _on_25_pressed():
+	$ModalVitamins.hide()
+	self.supplementButton = !self.supplementButton
+	if(supplementButton):
+		Global.supplementterbang = true
+		get_node("Area2D").show()
+	else:
+		Global.supplementterbang = false
+		get_node("Area2D").hide()
+	

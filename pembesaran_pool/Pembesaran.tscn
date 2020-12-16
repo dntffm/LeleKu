@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/Move Pool.png" type="Texture" id=1]
 [ext_resource path="res://assets/pembesaran.png" type="Texture" id=2]
@@ -66,6 +66,12 @@ font_data = ExtResource( 18 )
 font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=13]
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=14]
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=15]
 size = 38
 font_data = ExtResource( 29 )
 
@@ -495,6 +501,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" parent="ModalVitamins/50%" instance=ExtResource( 28 )]
+margin_left = 59.0
+margin_top = -18.0
+margin_right = 90.0
+margin_bottom = 13.0
+
+[node name="Label" type="Label" parent="ModalVitamins/50%/Sprite"]
+anchor_bottom = 0.226
+margin_left = 9.91064
+margin_top = 8.9668
+margin_right = 33.9106
+margin_bottom = 15.9608
+custom_fonts/font = SubResource( 13 )
+text = "0"
+
 [node name="25%" type="TextureButton" parent="ModalVitamins"]
 margin_left = 363.396
 margin_top = 235.201
@@ -505,6 +526,20 @@ texture_normal = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" parent="ModalVitamins/25%" instance=ExtResource( 28 )]
+margin_left = 150.076
+margin_top = -21.7091
+margin_right = 184.076
+margin_bottom = 12.2909
+
+[node name="Label" type="Label" parent="ModalVitamins/25%/Sprite"]
+margin_left = 11.1118
+margin_top = 7.93701
+margin_right = 33.1118
+margin_bottom = 24.937
+custom_fonts/font = SubResource( 14 )
+text = "0"
 
 [node name="VitaminLabel" type="Label" parent="ModalVitamins"]
 anchor_left = 0.5
@@ -552,7 +587,7 @@ margin_left = 105.829
 margin_top = 33.7027
 margin_right = 187.829
 margin_bottom = 114.703
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 15 )
 text = "1/20
 "
 [connection signal="pressed" from="PauseBtn" to="." method="_on_PauseBtn_pressed"]
@@ -566,6 +601,9 @@ text = "1/20
 [connection signal="pressed" from="Pause/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Pause/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="ModalShop/CloseShop" to="." method="_on_CloseShop_pressed"]
+[connection signal="pressed" from="ModalShop/Vit25%" to="." method="_on_Vit25_pressed"]
+[connection signal="pressed" from="ModalShop/Vit50%" to="." method="_on_Vit50_pressed"]
 [connection signal="pressed" from="ModalShop/Food2" to="." method="_on_Food2_pressed"]
 [connection signal="pressed" from="ModalFood/FoodClose" to="." method="_on_FoodClose_pressed"]
+[connection signal="pressed" from="ModalVitamins/25%" to="." method="_on_25_pressed"]
 [connection signal="pressed" from="ModalVitamins/VitaminClose" to="." method="_on_VitaminClose_pressed"]
