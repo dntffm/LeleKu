@@ -3,7 +3,8 @@ extends Control
 var leleNode = preload("res://lele/Lele.tscn")
 var foodButton = false
 var suppButton = false
-# Called when the node enters the scene tree for the first time.
+var adddirt = true
+var dirtimer =0
 func _ready():
 	$TextureRect/Label.text = str(Global.data["pembesaran"]["ikanbesar"]) + " / 20"
 	$Money/Money/MoneyLabel.text = str(Global.data.money)
@@ -34,7 +35,17 @@ func _process(delta):
 		$Area2D.position = get_viewport().get_mouse_position()
 	if(suppButton):
 		$Area2D.position = get_viewport().get_mouse_position()		
+	
+	var kotoran = preload("res://UI/Dirt.tscn")
+	var kt = kotoran.instance()
+	
 
+	if adddirt:
+		dirtimer = dirtimer+1
+		
+	if dirtimer > 50 :
+		get_node("Kotoran").add_child(kt)
+		dirtimer = 0
 
 func _on_PauseBtn_pressed():
 	get_node("Pause").show()
@@ -163,3 +174,11 @@ func _on_25_pressed():
 
 func _on_Button_pressed():
 	get_tree().change_scene("res://main_menu/MainMenu.tscn")
+
+
+func _on_Clean_pressed():
+	adddirt = false
+	if $Kotoran.get_child_count() > 0:
+		for x in $Kotoran.get_children():
+			x.queue_free()
+	adddirt = true

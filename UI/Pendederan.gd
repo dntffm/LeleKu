@@ -13,8 +13,9 @@ var fishCount = 0
 var vitCount = 0
 var path = "res://storage/storage.json"
 var dirtimer = 0
-
+var kotorannode = preload("res://UI/Dirt.tscn")
 func _ready():
+	
 	$Money/MoneyBadge/MoneyLabel.text = str(Global.data.money)
 	$Pool/TextureRect/CountLabel.text = str(Global.data["pendederan"]["ikankecil"]) + " / 20"
 	$Food/FoodBadge/FoodCount.text = str(Global.data.foodsA)
@@ -42,15 +43,15 @@ func _ready():
 	#ClosePauseDialog = get_node("Pause/ColorRect/Panel/CloseDialogButton")
 
 func _process(delta):
-	var kotorannode = preload("res://UI/Dirt.tscn")
-	var kotoran = kotorannode.instance()
-	kotoran.position = Vector2(rand_range(199.0,1122.0),rand_range(60.0,572.0))
+	var kotoran = preload("res://UI/Dirt.tscn")
+	var kt = kotoran.instance()
 	
+
 	if adddirt:
 		dirtimer = dirtimer+1
 		
-	if dirtimer > 100 :
-		$Kotoran.add_child(kotoran)
+	if dirtimer > 50 :
+		get_node("Kotoran").add_child(kt)
 		dirtimer = 0
 	if(foodButton):
 		$Area2D.position = get_viewport().get_mouse_position()
@@ -252,8 +253,9 @@ func _on_Vit50_pressed():
 
 func _on_Clean_pressed():
 	adddirt = false
-	for x in $Kotoran.get_children():
-		x.queue_free()
+	if $Kotoran.get_child_count() > 0:
+		for x in $Kotoran.get_children():
+			x.queue_free()
 	adddirt = true
 	
 

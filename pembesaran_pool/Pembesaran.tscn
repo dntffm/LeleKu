@@ -635,7 +635,6 @@ text = "1/20
 "
 
 [node name="GameOverDialog" parent="." instance=ExtResource( 17 )]
-visible = true
 
 [node name="Label" type="Label" parent="GameOverDialog"]
 anchor_left = 0.5
@@ -696,11 +695,16 @@ text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Kotoran" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 [connection signal="pressed" from="PauseBtn" to="." method="_on_PauseBtn_pressed"]
 [connection signal="pressed" from="MovePool" to="." method="_on_MovePool_pressed"]
 [connection signal="pressed" from="Food" to="." method="_on_Food_pressed"]
 [connection signal="pressed" from="Shop" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Vitamin" to="." method="_on_Vitamin_pressed"]
+[connection signal="pressed" from="Clean" to="." method="_on_Clean_pressed"]
 [connection signal="pressed" from="ModalDialog/Yes" to="." method="_on_Yes_pressed"]
 [connection signal="pressed" from="ModalDialog/No" to="." method="_on_No_pressed"]
 [connection signal="pressed" from="Pause/Close" to="." method="_on_Close_pressed"]

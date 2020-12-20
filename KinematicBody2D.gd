@@ -42,14 +42,14 @@ func _process(delta):
 			if par == 'Grass':
 				get_node('/root/Pendederan/Pool/HBoxContainer').remove_child(get_node('/root/Pendederan/Pool/HBoxContainer').get_children()[Global.playerhealth - 1])
 				if get_node('/root/Pendederan/Pool/HBoxContainer').get_child_count() == 0:
-					get_node('/root/Pendederan/GameOver/coin/Label').text = str(Global.jumlahpanen * 5000)
+					get_node('/root/Pendederan/GameOver/coin/Label').text = str(Global.data.money)
 					get_node('/root/Pendederan/GameOver/fish/Label').text = str(Global.jumlahpanen)
 					get_node('/root/Pendederan/GameOver').show()
 			else:
 				get_parent().get_parent().get_node("Pool/HBoxContainer").remove_child(get_parent().get_parent().get_node("Pool/HBoxContainer").get_children()[Global.playerhealth - 1])
 				if get_parent().get_parent().get_node("Pool/HBoxContainer").get_child_count() == 0:
 					get_parent().get_parent().get_node('GameOverDialog/fish/Label').text = str(Global.jumlahpanen)
-					get_parent().get_parent().get_node('GameOverDialog/gameovercoin/gameoverlabel').text = str(Global.jumlahpanen * 5000)
+					get_parent().get_parent().get_node('GameOverDialog/gameovercoin/gameoverlabel').text = str(Global.data.money)
 					get_parent().get_parent().get_node('GameOverDialog').show()
 			Global.playerhealth = Global.playerhealth - 1
 			self.lelehidup = false

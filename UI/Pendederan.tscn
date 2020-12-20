@@ -752,18 +752,7 @@ visible = false
 position = Vector2( 429.633, 428.373 )
 z_index = 5
 
-[node name="Kotoran" type="TextureRect" parent="."]
-visible = false
-margin_left = 130.0
-margin_top = 129.0
-margin_right = 560.0
-margin_bottom = 337.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="GameOver" parent="." instance=ExtResource( 17 )]
-visible = true
 
 [node name="Label" type="Label" parent="GameOver"]
 anchor_left = 0.5
@@ -819,6 +808,12 @@ text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Kotoran" type="TextureRect" parent="."]
+margin_left = 102.0
+margin_top = 132.0
+margin_right = 630.0
+margin_bottom = 328.0
 [connection signal="pressed" from="PauseBtn" to="." method="_on_PauseBtn_pressed"]
 [connection signal="pressed" from="MovePool" to="." method="_on_MovePool_pressed"]
 [connection signal="pressed" from="Food" to="." method="_on_Food_pressed"]
