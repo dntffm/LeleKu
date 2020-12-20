@@ -11,7 +11,7 @@ func _ready():
 	$Vitamin/FoodBadge2/FoodBadgeLabel.text = str(Global.data.vitaminA + Global.data.vitaminB)
 	get_node("ModalVitamins/50%/Sprite/Label").text = str(Global.data.vitaminB)
 	get_node("ModalVitamins/25%/Sprite/Label").text = str(Global.data.vitaminA)
-	print(fishes)
+	$Food/FoodBadge/FoodBadgeLabel.text  = str(Global.data.foodsB)
 	for x in range(fishes):
 		var parent = get_node("Pool")
 		var lele = leleNode.instance()
@@ -20,6 +20,12 @@ func _ready():
 		lele.scale.x = 3.0
 		lele.scale.y = 3.0
 		parent.add_child(lele)
+	for x in range(Global.playerhealth):
+		var health = TextureRect.new()
+		health.texture = load('res://assets/health.png')
+		health.rect_scale = Vector2(0.2,0.2)
+		
+		$Pool/HBoxContainer.add_child(health)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,7 +61,7 @@ func _on_Food_pressed():
 		if get_node("Pool").get_children() == []:
 			print("no fishes")
 		else: 
-			print(get_node("Pool").get_children()[0].hungryVal)
+			
 			foodButton = !foodButton
 			Global.pakanterbang = foodButton
 			if(foodButton):
@@ -153,3 +159,7 @@ func _on_25_pressed():
 	else:
 		Global.supplementterbang = false
 		get_node("Area2D").hide()
+
+
+func _on_Button_pressed():
+	get_tree().change_scene("res://main_menu/MainMenu.tscn")

@@ -21,12 +21,13 @@ func _ready():
 	$Vitamin/VitBadge/VitBadgeLabel.text = str(Global.data.vitaminA + Global.data.vitaminB)
 	get_node("ModalVitamins/25%/vit25badge/Label").text = str(Global.data.vitaminA)
 	get_node("ModalVitamins/50%/vit50badge/Label").text = str(Global.data.vitaminB)
-	var health = TextureRect.new()
-	health.texture = load('res://assets/health.png')
-	health.rect_scale = Vector2(0.2,0.2)
-	
-	for x in range(4):
+	for x in range(Global.playerhealth):
+		var health = TextureRect.new()
+		health.texture = load('res://assets/health.png')
+		health.rect_scale = Vector2(0.2,0.2)
+		
 		$Pool/HBoxContainer.add_child(health)
+	
 	PauseButton = get_node("PauseBtn")
 	get_node("Area2D").hide()
 	
@@ -49,8 +50,8 @@ func _process(delta):
 		dirtimer = dirtimer+1
 		
 	if dirtimer > 100 :
-		dirtimer = 0
 		$Kotoran.add_child(kotoran)
+		dirtimer = 0
 	if(foodButton):
 		$Area2D.position = get_viewport().get_mouse_position()
 	if(supplementButton):
@@ -163,9 +164,12 @@ func _on_MovePool_pressed():
 	var nodes = get_node("Grass").get_children()
 	var temp = []
 	for x in nodes:
-		if x.readymove:
-			temp.append(x)
-			
+		if x.lelehidup:
+			if x.readymove:
+				temp.append(x)
+		else:
+			temp = []
+			break
 	
 	if(temp != []):	
 		get_tree().change_scene("res://pembesaran_pool/Pembesaran.tscn")
@@ -180,6 +184,7 @@ func _on_MovePool_pressed():
 		file.store_line(to_json(data))
 		file.close()
 	else:
+		print('ada ikan mati belm dibersihin')
 		print("belum ada ikan yg siap pindah")
 		get_tree().change_scene("res://pembesaran_pool/Pembesaran.tscn")
 
@@ -263,3 +268,7 @@ func _on_25_pressed():
 		Global.supplementterbang = false
 		get_node("Area2D").hide()
 	
+
+
+func _on_Button_pressed():
+	get_tree().change_scene("res://main_menu/MainMenu.tscn")

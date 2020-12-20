@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://assets/Move Pool.png" type="Texture" id=1]
 [ext_resource path="res://assets/grass-kol-1.png" type="Texture" id=2]
@@ -20,7 +20,8 @@
 [ext_resource path="res://font/AmazingKids.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://assets/icons8_toggle_on_127px.png" type="Texture" id=19]
 [ext_resource path="res://assets/icons8_whole_fish_100px.png" type="Texture" id=20]
-[ext_resource path="res://icons8_heart_100px_1.png" type="Texture" id=21]
+[ext_resource path="res://assets/icons8_coins_100px.png" type="Texture" id=21]
+[ext_resource path="res://assets/icons8_fish_100px.png" type="Texture" id=22]
 [ext_resource path="res://assets/shop-3.png" type="Texture" id=23]
 [ext_resource path="res://assets/shop-4.png" type="Texture" id=24]
 [ext_resource path="res://assets/shop-1.png" type="Texture" id=25]
@@ -93,6 +94,20 @@ font_data = ExtResource( 29 )
 [sub_resource type="DynamicFont" id=19]
 font_data = ExtResource( 29 )
 
+[sub_resource type="DynamicFont" id=20]
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 30
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=22]
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 30
+font_data = ExtResource( 29 )
+
 [node name="Pendederan" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -148,24 +163,6 @@ rect_scale = Vector2( 0.3, 0.3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Health" type="TextureRect" parent="Pool/HBoxContainer"]
-margin_right = 100.0
-margin_bottom = 100.0
-texture = ExtResource( 21 )
-
-[node name="Health2" type="TextureRect" parent="Pool/HBoxContainer"]
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 100.0
-texture = ExtResource( 21 )
-
-[node name="Health3" type="TextureRect" parent="Pool/HBoxContainer"]
-margin_left = 208.0
-margin_right = 308.0
-margin_bottom = 100.0
-texture = ExtResource( 21 )
-stretch_mode = 3
 
 [node name="Grass" type="TextureRect" parent="."]
 margin_left = 45.7382
@@ -239,6 +236,9 @@ margin_right = 28.0
 margin_bottom = 29.0594
 custom_fonts/font = SubResource( 3 )
 text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Trash" type="TextureButton" parent="."]
 margin_left = 496.03
@@ -251,6 +251,20 @@ texture_normal = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FoodBadge2" parent="Trash" instance=ExtResource( 28 )]
+margin_left = 60.4477
+margin_top = -19.2043
+margin_right = 97.4477
+margin_bottom = 17.7957
+
+[node name="FoodCount" type="Label" parent="Trash/FoodBadge2"]
+margin_left = 15.0
+margin_top = 10.0594
+margin_right = 28.0
+margin_bottom = 29.0594
+custom_fonts/font = SubResource( 3 )
+text = "0"
 
 [node name="Shop" type="TextureButton" parent="."]
 margin_left = 253.907
@@ -650,7 +664,6 @@ custom_fonts/font = SubResource( 13 )
 text = "Close"
 
 [node name="ModalVitamins" parent="." instance=ExtResource( 17 )]
-visible = true
 
 [node name="50%" type="TextureButton" parent="ModalVitamins"]
 anchor_left = 0.5
@@ -748,6 +761,64 @@ margin_bottom = 337.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GameOver" parent="." instance=ExtResource( 17 )]
+visible = true
+
+[node name="Label" type="Label" parent="GameOver"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.0
+margin_top = -117.0
+margin_right = 45.0
+margin_bottom = -100.0
+custom_fonts/font = SubResource( 20 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "GAME OVER"
+
+[node name="coin" type="Sprite" parent="GameOver"]
+position = Vector2( 309.179, 210.737 )
+scale = Vector2( 0.544947, 0.544947 )
+texture = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="GameOver/coin"]
+margin_left = 90.83
+margin_top = -18.166
+margin_right = 157.83
+margin_bottom = 11.834
+custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" parent="GameOver" instance=ExtResource( 16 )]
+margin_left = 318.704
+margin_top = 309.045
+margin_right = 392.704
+margin_bottom = 346.045
+custom_fonts/font = SubResource( 22 )
+text = "OK"
+
+[node name="fish" type="Sprite" parent="GameOver"]
+position = Vector2( 306.365, 274.391 )
+scale = Vector2( 0.658379, 0.658379 )
+texture = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="GameOver/fish"]
+margin_left = 84.8469
+margin_top = -16.1102
+margin_right = 148.847
+margin_bottom = 0.889832
+custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="PauseBtn" to="." method="_on_PauseBtn_pressed"]
 [connection signal="pressed" from="MovePool" to="." method="_on_MovePool_pressed"]
 [connection signal="pressed" from="Food" to="." method="_on_Food_pressed"]
@@ -769,3 +840,4 @@ __meta__ = {
 [connection signal="pressed" from="ModalFood/FoodClose" to="." method="_on_FoodClose_pressed"]
 [connection signal="pressed" from="ModalVitamins/25%" to="." method="_on_25_pressed"]
 [connection signal="pressed" from="ModalVitamins/VitaminClose" to="." method="_on_VitaminClose_pressed"]
+[connection signal="pressed" from="GameOver/Button" to="." method="_on_Button_pressed"]

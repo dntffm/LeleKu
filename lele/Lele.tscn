@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://assets/New folder/lele2-min.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://assets/New folder/lele9-min.png" type="Texture" id=8]
 [ext_resource path="res://assets/icons8_checked_radio_button_100px.png" type="Texture" id=9]
 [ext_resource path="res://assets/New folder/lele6-min.png" type="Texture" id=10]
+[ext_resource path="res://assets/icons8_money_bag_100px.png" type="Texture" id=11]
+[ext_resource path="res://assets/icons8_poison_60px.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19.3259, 12.0312 )
@@ -86,7 +88,6 @@ rotation = 1.5708
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 2 )
 animation = "swim"
-frame = 2
 playing = true
 centered = false
 
@@ -190,6 +191,43 @@ rotation = -3.01336e-13
 scale = Vector2( 0.377276, 0.377276 )
 texture = ExtResource( 3 )
 
+[node name="DieIndicator" type="Panel" parent="AnimatedSprite"]
+visible = false
+anchor_top = -0.0350771
+anchor_bottom = -0.0350771
+margin_left = -51.2298
+margin_top = -75.8736
+margin_right = -7.22977
+margin_bottom = 2.12644
+rect_pivot_offset = Vector2( 68.0479, 36.5 )
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="AnimatedSprite/DieIndicator"]
+margin_left = 43.884
+margin_top = 53.5787
+margin_right = 61.884
+margin_bottom = 71.5787
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="AnimatedSprite/DieIndicator/Panel"]
+margin_left = 24.1639
+margin_top = 13.1499
+margin_right = 36.1639
+margin_bottom = 25.1499
+custom_styles/panel = SubResource( 9 )
+
+[node name="food" type="Sprite" parent="AnimatedSprite/DieIndicator/Panel/Panel"]
+position = Vector2( -47.4673, -22.8971 )
+rotation = -3.01336e-13
+scale = Vector2( 0.377276, 0.377276 )
+texture = ExtResource( 12 )
+
 [node name="MovePoolIndicator" type="Panel" parent="AnimatedSprite"]
 visible = false
 anchor_top = -0.0350771
@@ -226,4 +264,41 @@ position = Vector2( -47.4673, -22.8971 )
 rotation = -1.5708
 scale = Vector2( 0.377276, 0.377276 )
 texture = ExtResource( 9 )
+
+[node name="PanenIndicator" type="Panel" parent="AnimatedSprite"]
+visible = false
+anchor_top = -0.0350771
+anchor_bottom = -0.0350771
+margin_left = -51.2298
+margin_top = -75.8736
+margin_right = -7.22977
+margin_bottom = 2.12644
+rect_pivot_offset = Vector2( 68.0479, 36.5 )
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="AnimatedSprite/PanenIndicator"]
+margin_left = 43.884
+margin_top = 53.5787
+margin_right = 61.884
+margin_bottom = 71.5787
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="AnimatedSprite/PanenIndicator/Panel"]
+margin_left = 24.1639
+margin_top = 13.1499
+margin_right = 36.1639
+margin_bottom = 25.1499
+custom_styles/panel = SubResource( 9 )
+
+[node name="food" type="Sprite" parent="AnimatedSprite/PanenIndicator/Panel/Panel"]
+position = Vector2( -47.4673, -22.8971 )
+rotation = -1.5708
+scale = Vector2( 0.377276, 0.377276 )
+texture = ExtResource( 11 )
 [connection signal="pressed" from="AnimatedSprite/Button" to="." method="_on_Button_pressed"]
